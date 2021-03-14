@@ -56,6 +56,29 @@ func (sll *singlyLinkedList) RemoveHead() interface{} {
 	return data
 }
 
+func (sll *singlyLinkedList) RemoveTail() interface{} {
+	if sll.Head == nil {
+		return nil
+	}
+	var data interface{}
+	var prev *node
+	current := sll.Head
+	for current != nil {
+		if current.Next == nil {
+			if prev == nil {
+				sll.Head = nil
+			} else {
+				prev.Next = nil
+			}
+			data = current.Data
+			break
+		}
+		prev = current
+		current = current.Next
+	}
+	return data
+}
+
 func (sll *singlyLinkedList) Reverse() *singlyLinkedList {
 	if sll.Head != nil {
 		var prev *node = nil
