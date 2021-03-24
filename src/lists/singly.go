@@ -7,7 +7,7 @@ type node struct {
 	next *node
 }
 
-// Singly Linked List ADT
+// SinglyLinkedList ADT
 type SinglyLinkedList interface {
 	Size() int
 	IsEmpty() bool
@@ -23,14 +23,11 @@ type singlyLinkedList struct {
 	size int
 }
 
-func NewSinglyLinkedList(data interface{}) *singlyLinkedList {
-	if data != nil {
-		return &singlyLinkedList{
-			head: &node{data: data},
-			size: 0,
-		}
+func NewSinglyLinkedList() *singlyLinkedList {
+	return &singlyLinkedList{
+		head: nil,
+		size: 0,
 	}
-	return &singlyLinkedList{}
 }
 
 func (sll *singlyLinkedList) Size() int {

@@ -15,7 +15,7 @@ type stack struct {
 
 func NewStack() *stack {
 	return &stack{
-		list: NewSinglyLinkedList(nil),
+		list: NewSinglyLinkedList(),
 	}
 }
 

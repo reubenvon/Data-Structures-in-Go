@@ -8,7 +8,7 @@ import (
 
 func TestSinglyLinkedList_Size(t *testing.T) {
 	// Arrange
-	sut := lists.NewSinglyLinkedList(nil)
+	sut := lists.NewSinglyLinkedList()
 	sut.Prepend(1)
 	sut.Append(2)
 	sut.Append(3)
@@ -27,7 +27,7 @@ func TestSinglyLinkedList_Size(t *testing.T) {
 
 func TestSinglyLinkedList_IsEmpty(t *testing.T) {
 	// Arrange
-	sut := lists.NewSinglyLinkedList(nil)
+	sut := lists.NewSinglyLinkedList()
 	expectedResult := true
 	// Act
 	actualResult := sut.IsEmpty()
@@ -39,7 +39,7 @@ func TestSinglyLinkedList_IsEmpty(t *testing.T) {
 
 func TestSinglyLinkedList_IsEmpty_WhenListIsNotEmpty_ShouldReturnFalse(t *testing.T) {
 	// Arrange
-	sut := lists.NewSinglyLinkedList(nil)
+	sut := lists.NewSinglyLinkedList()
 	sut.Append(1)
 	expectedResult := false
 	// Act
@@ -52,7 +52,7 @@ func TestSinglyLinkedList_IsEmpty_WhenListIsNotEmpty_ShouldReturnFalse(t *testin
 
 func TestSinglyLinkedList_Size_WhenListIsEmpty_ShouldReturnZero(t *testing.T) {
 	// Arrange
-	sut := lists.NewSinglyLinkedList(nil)
+	sut := lists.NewSinglyLinkedList()
 	expectedResult := 0
 	// Act
 	actualResult := sut.Size()
@@ -64,7 +64,7 @@ func TestSinglyLinkedList_Size_WhenListIsEmpty_ShouldReturnZero(t *testing.T) {
 
 func TestSinglyLinkedList_Append(t *testing.T) {
 	// Arrange
-	sut := lists.NewSinglyLinkedList(nil)
+	sut := lists.NewSinglyLinkedList()
 	expectedResult := []interface{}{1, 2, "Hello", "World"}
 	// Act
 	for _, value := range expectedResult {
@@ -77,7 +77,7 @@ func TestSinglyLinkedList_Append(t *testing.T) {
 
 func TestSinglyLinkedList_Prepend(t *testing.T) {
 	// Arrange
-	sut := lists.NewSinglyLinkedList(nil)
+	sut := lists.NewSinglyLinkedList()
 	testData := []interface{}{1, 2, "Hello", "World"}
 	expectedResult := []interface{}{"World", "Hello", 2, 1}
 	// Act
@@ -91,7 +91,7 @@ func TestSinglyLinkedList_Prepend(t *testing.T) {
 
 func TestSinglyLinkedList_Reverse(t *testing.T) {
 	// Arrange
-	sut := lists.NewSinglyLinkedList(nil)
+	sut := lists.NewSinglyLinkedList()
 	testData := []interface{}{1, 2, "Hello", "World"}
 	expectedResult := []interface{}{"World", "Hello", 2, 1}
 	for _, value := range testData {
@@ -105,7 +105,7 @@ func TestSinglyLinkedList_Reverse(t *testing.T) {
 
 func TestSinglyLinkedList_RemoveHead(t *testing.T) {
 	// Arrange
-	sut := lists.NewSinglyLinkedList(nil)
+	sut := lists.NewSinglyLinkedList()
 	testData := []interface{}{1, 2, "Hello", "World"}
 	expectedResult := []interface{}{2, "Hello", "World"}
 	for _, value := range testData {
@@ -120,7 +120,7 @@ func TestSinglyLinkedList_RemoveHead(t *testing.T) {
 
 func TestSinglyLinkedList_RemoveHead_ShouldReturnData(t *testing.T) {
 	// Arrange
-	sut := lists.NewSinglyLinkedList(nil)
+	sut := lists.NewSinglyLinkedList()
 	expectedResult := "Hello"
 	sut.Append(expectedResult)
 	// Act
@@ -133,7 +133,7 @@ func TestSinglyLinkedList_RemoveHead_ShouldReturnData(t *testing.T) {
 
 func TestSinglyLinkedList_Head(t *testing.T) {
 	// Arrange
-	sut := lists.NewSinglyLinkedList(nil)
+	sut := lists.NewSinglyLinkedList()
 	expectedResult := "Hi"
 	sut.Append(expectedResult)
 	// Act
@@ -146,7 +146,7 @@ func TestSinglyLinkedList_Head(t *testing.T) {
 
 func TestSinglyLinkedList_Tail(t *testing.T) {
 	// Arrange
-	sut := lists.NewSinglyLinkedList(nil)
+	sut := lists.NewSinglyLinkedList()
 	expectedResult := "Hi"
 	sut.Append("Hello")
 	sut.Append(expectedResult)
@@ -160,7 +160,7 @@ func TestSinglyLinkedList_Tail(t *testing.T) {
 
 func TestSinglyLinkedList_Tail_WhenValueIsTheOnlyElement_ShouldReturnSaidValue(t *testing.T) {
 	// Arrange
-	sut := lists.NewSinglyLinkedList(nil)
+	sut := lists.NewSinglyLinkedList()
 	expectedResult := "Hello"
 	sut.Append(expectedResult)
 	// Act
@@ -173,7 +173,7 @@ func TestSinglyLinkedList_Tail_WhenValueIsTheOnlyElement_ShouldReturnSaidValue(t
 
 func TestSinglyLinkedList_RemoveTail(t *testing.T) {
 	// Arrange
-	sut := lists.NewSinglyLinkedList(nil)
+	sut := lists.NewSinglyLinkedList()
 	testData := []interface{}{1, 2, "Hello", "World"}
 	expectedResult := []interface{}{1, 2, "Hello"}
 	for _, value := range testData {
@@ -188,7 +188,7 @@ func TestSinglyLinkedList_RemoveTail(t *testing.T) {
 
 func TestSinglyLinkedList_RemoveTail_ShouldReturnData(t *testing.T) {
 	// Arrange
-	sut := lists.NewSinglyLinkedList(nil)
+	sut := lists.NewSinglyLinkedList()
 	expectedResult := "Hi there, I'm tail"
 	sut.Append(expectedResult)
 	// Act
@@ -201,7 +201,7 @@ func TestSinglyLinkedList_RemoveTail_ShouldReturnData(t *testing.T) {
 
 func TestSinglyLinkedList_ToSlice(t *testing.T) {
 	// Arrange
-	sut := lists.NewSinglyLinkedList(nil)
+	sut := lists.NewSinglyLinkedList()
 	expectedResult := []interface{}{1}
 	// Act
 	sut.Append(1)
