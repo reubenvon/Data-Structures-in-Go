@@ -28,7 +28,7 @@ func (st *stack) Pop() interface{} {
 }
 
 func (st *stack) Peek() interface{}  {
-	return st.list.Head.Data
+	return st.list.head.data
 }
 
 func (st *stack) Size() int {

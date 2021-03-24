@@ -6,6 +6,62 @@ import (
 	"testing"
 )
 
+func TestSinglyLinkedList_Size(t *testing.T) {
+	// Arrange
+	sut := lists.NewSinglyLinkedList(nil)
+	sut.Prepend(1)
+	sut.Append(2)
+	sut.Append(3)
+	sut.Prepend(1)
+	sut.Append("hello")
+	sut.RemoveTail()
+	sut.RemoveHead()
+	expectedResult := 3
+	// Act
+	actualResult := sut.Size()
+	// Assert
+	if actualResult != expectedResult {
+		t.Errorf("Expected size is %v but got %v.", expectedResult, actualResult)
+	}
+}
+
+func TestSinglyLinkedList_IsEmpty(t *testing.T) {
+	// Arrange
+	sut := lists.NewSinglyLinkedList(nil)
+	expectedResult := true
+	// Act
+	actualResult := sut.IsEmpty()
+	// Assert
+	if actualResult != expectedResult {
+		t.Errorf("Expected list to be empty but it is not.")
+	}
+}
+
+func TestSinglyLinkedList_IsEmpty_WhenListIsNotEmpty_ShouldReturnFalse(t *testing.T) {
+	// Arrange
+	sut := lists.NewSinglyLinkedList(nil)
+	sut.Append(1)
+	expectedResult := false
+	// Act
+	actualResult := sut.IsEmpty()
+	// Assert
+	if actualResult != expectedResult {
+		t.Errorf("Expected list to be not empty but it is not.")
+	}
+}
+
+func TestSinglyLinkedList_Size_WhenListIsEmpty_ShouldReturnZero(t *testing.T) {
+	// Arrange
+	sut := lists.NewSinglyLinkedList(nil)
+	expectedResult := 0
+	// Act
+	actualResult := sut.Size()
+	// Assert
+	if actualResult != expectedResult {
+		t.Errorf("Expected size is %v but got %v.", expectedResult, actualResult)
+	}
+}
+
 func TestSinglyLinkedList_Append(t *testing.T) {
 	// Arrange
 	sut := lists.NewSinglyLinkedList(nil)
@@ -69,6 +125,46 @@ func TestSinglyLinkedList_RemoveHead_ShouldReturnData(t *testing.T) {
 	sut.Append(expectedResult)
 	// Act
 	actualResult := sut.RemoveHead()
+	// Assert
+	if expectedResult != actualResult {
+		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
+	}
+}
+
+func TestSinglyLinkedList_Head(t *testing.T) {
+	// Arrange
+	sut := lists.NewSinglyLinkedList(nil)
+	expectedResult := "Hi"
+	sut.Append(expectedResult)
+	// Act
+	actualResult := sut.Head()
+	// Assert
+	if expectedResult != actualResult {
+		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
+	}
+}
+
+func TestSinglyLinkedList_Tail(t *testing.T) {
+	// Arrange
+	sut := lists.NewSinglyLinkedList(nil)
+	expectedResult := "Hi"
+	sut.Append("Hello")
+	sut.Append(expectedResult)
+	// Act
+	actualResult := sut.Tail()
+	// Assert
+	if expectedResult != actualResult {
+		t.Errorf("Expected %v but got %v", expectedResult, actualResult)
+	}
+}
+
+func TestSinglyLinkedList_Tail_WhenValueIsTheOnlyElement_ShouldReturnSaidValue(t *testing.T) {
+	// Arrange
+	sut := lists.NewSinglyLinkedList(nil)
+	expectedResult := "Hello"
+	sut.Append(expectedResult)
+	// Act
+	actualResult := sut.Tail()
 	// Assert
 	if expectedResult != actualResult {
 		t.Errorf("Expected %v but got %v", expectedResult, actualResult)

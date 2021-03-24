@@ -3,115 +3,163 @@ package lists
 import "fmt"
 
 type node struct {
-	Data interface{}
-	Next *node
+	data interface{}
+	next *node
+}
+
+// Singly Linked List ADT
+type SinglyLinkedList interface {
+	Size() int
+	IsEmpty() bool
+	Append(interface{})
+	Prepend(interface{})
+	RemoveHead() interface{}
+	Head() interface{}
+	Tail() interface{}
 }
 
 type singlyLinkedList struct {
-	Head *node
+	head *node
+	size int
 }
 
 func NewSinglyLinkedList(data interface{}) *singlyLinkedList {
 	if data != nil {
 		return &singlyLinkedList{
-			Head: &node{Data: data},
+			head: &node{data: data},
+			size: 0,
 		}
 	}
 	return &singlyLinkedList{}
 }
 
+func (sll *singlyLinkedList) Size() int {
+	return sll.size
+}
+
+func (sll *singlyLinkedList) IsEmpty() bool {
+	if sll.head == nil {
+		return true
+	}
+	return false
+}
+
 func (sll *singlyLinkedList) Append(data interface{}) {
-	if sll.Head == nil {
-		sll.Head = &node{Data: data}
+	if sll.head == nil {
+		sll.head = &node{data: data}
+		sll.size++
 		return
 	}
-	current := sll.Head
+	current := sll.head
 	for current != nil {
-		if current.Next == nil {
-			current.Next = &node{Data: data}
+		if current.next == nil {
+			current.next = &node{data: data}
+			sll.size++
 			return
 		} else {
-			current = current.Next
+			current = current.next
 		}
 	}
 }
 
 func (sll *singlyLinkedList) Prepend(data interface{}) {
-	if sll.Head == nil {
-		sll.Head = &node{Data: data}
+	if sll.head == nil {
+		sll.head = &node{data: data}
+		sll.size++
 		return
 	}
-	temp := sll.Head
-	sll.Head = &node{Data: data}
-	sll.Head.Next = temp
+	temp := sll.head
+	sll.head = &node{data: data}
+	sll.head.next = temp
+	sll.size++
 }
 
 func (sll *singlyLinkedList) RemoveHead() interface{} {
-	if sll.Head == nil {
+	if sll.head == nil {
 		return nil
 	}
-	data := sll.Head.Data
-	next := sll.Head.Next
-	sll.Head = next
+	data := sll.head.data
+	next := sll.head.next
+	sll.head = next
+	sll.size--
 	return data
 }
 
+func (sll *singlyLinkedList) Head() interface{} {
+	return sll.head.data
+}
+
+func (sll *singlyLinkedList) Tail() interface{} {
+	if sll.head == nil {
+		return nil
+	}
+	current := sll.head
+	for current != nil {
+		if current.next == nil {
+			break
+		}
+		current = current.next
+	}
+	return current.data
+}
+
 func (sll *singlyLinkedList) RemoveTail() interface{} {
-	if sll.Head == nil {
+	if sll.head == nil {
 		return nil
 	}
 	var data interface{}
 	var prev *node
-	current := sll.Head
+	current := sll.head
 	for current != nil {
-		if current.Next == nil {
+		if current.next == nil {
 			if prev == nil {
-				sll.Head = nil
+				sll.head = nil
 			} else {
-				prev.Next = nil
+				prev.next = nil
 			}
-			data = current.Data
+			data = current.data
 			break
 		}
 		prev = current
-		current = current.Next
+		current = current.next
 	}
+	sll.size--
 	return data
 }
 
 func (sll *singlyLinkedList) Reverse() *singlyLinkedList {
-	if sll.Head != nil {
+	if sll.head != nil {
 		var prev *node = nil
-		current := sll.Head
+		current := sll.head
 		for current != nil {
-			next := current.Next
-			current.Next = prev
+			next := current.next
+			current.next = prev
 			prev = current
 			current = next
 		}
-		return &singlyLinkedList{Head: prev}
+		return &singlyLinkedList{head: prev}
 	}
 	return &singlyLinkedList{}
 }
 
 func (sll *singlyLinkedList) PrintAll()  {
-	if sll.Head == nil {
+	if sll.head == nil {
 		fmt.Println("List is empty.")
 		return
 	}
-	current := sll.Head
+	current := sll.head
 	for current != nil {
-		fmt.Println(current.Data)
-		current = current.Next
+		fmt.Println(current.data)
+		current = current.next
 	}
 }
 
 func (sll *singlyLinkedList) ToSlice() []interface{} {
 	var result []interface{}
-	current := sll.Head
+	current := sll.head
 	for current != nil {
-		result = append(result, current.Data)
-		current = current.Next
+		result = append(result, current.data)
+		current = current.next
 	}
 	return result
 }
