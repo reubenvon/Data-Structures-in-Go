@@ -1,12 +1,13 @@
 package lists
 
 import (
+	"datastructures/src/lists"
 	"testing"
 )
 
 func TestStack_Push(t *testing.T) {
 	// Arrange
-	sut := NewStack()
+	sut := lists.NewStack()
 	expectedResult := 1
 	// Act
 	sut.Push('c')
@@ -23,7 +24,7 @@ func TestStack_Push(t *testing.T) {
 
 func TestStack_Pop_ShouldReturnValue(t *testing.T) {
 	// Arrange
-	sut := NewStack()
+	sut := lists.NewStack()
 	expectedResult := 1
 	sut.Push(expectedResult)
 	// Act
@@ -36,7 +37,7 @@ func TestStack_Pop_ShouldReturnValue(t *testing.T) {
 
 func TestStack_Pop_ShouldRemoveValue(t *testing.T) {
 	// Arrange
-	sut := NewStack()
+	sut := lists.NewStack()
 	sut.Push(1)
 	expectedResult := 0
 	// Act
@@ -50,7 +51,7 @@ func TestStack_Pop_ShouldRemoveValue(t *testing.T) {
 
 func TestStack_Peek_ShouldReturnLastPushedValue(t *testing.T) {
 	// Arrange
-	sut := NewStack()
+	sut := lists.NewStack()
 	expectedResult := "I am the last value"
 	sut.Push(1)
 	sut.Push(2)
@@ -65,7 +66,7 @@ func TestStack_Peek_ShouldReturnLastPushedValue(t *testing.T) {
 
 func TestStack_Peek_ShouldNotPopValue(t *testing.T) {
 	// Arrange
-	sut := NewStack()
+	sut := lists.NewStack()
 	sut.Push(1)
 	sut.Push(2)
 	sut.Push(3)

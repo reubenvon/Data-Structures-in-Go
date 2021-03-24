@@ -1,7 +1,7 @@
 package main
 
 import (
-	"datastructures/lists"
+	"datastructures/src/lists"
 	"fmt"
 )
 
