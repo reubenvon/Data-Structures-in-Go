@@ -7,7 +7,7 @@ type stack struct {
 
 func NewStack() *stack {
 	return &stack{
-		list: &singlyLinkedList{},
+		list: NewSinglyLinkedList(nil),
 		size: 0,
 	}
 }
@@ -37,4 +37,8 @@ func (st *stack) Size() int {
 
 func (st *stack) ToSlice() []interface{} {
 	return st.list.ToSlice()
+}
+
+func (st *stack) PrintAll() {
+	st.list.PrintAll()
 }
