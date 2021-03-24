@@ -35,7 +35,7 @@ func (st *stack) Peek() interface{}  {
 }
 
 func (st *stack) Size() int {
-	return st.list.size
+	return st.list.Size()
 }
 
 func (st *stack) IsEmpty() bool {
