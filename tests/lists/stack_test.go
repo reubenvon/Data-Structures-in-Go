@@ -79,3 +79,28 @@ func TestStack_Peek_ShouldNotPopValue(t *testing.T) {
 		t.Errorf("Expected size is %v but got %v.", expectedResult, actualResult)
 	}
 }
+
+func TestStack_IsEmpty(t *testing.T) {
+	// Arrange
+	sut := lists.NewStack()
+	expectedResult := true
+	// Act
+	actualResult := sut.IsEmpty()
+	// Assert
+	if actualResult != expectedResult {
+		t.Errorf("Expected list to be empty but it is not.")
+	}
+}
+
+func TestStack_IsEmpty_WhenStackIsNotEmpty_ShouldReturnFalse(t *testing.T) {
+	// Arrange
+	sut := lists.NewStack()
+	sut.Push(1)
+	expectedResult := false
+	// Act
+	actualResult := sut.IsEmpty()
+	// Assert
+	if actualResult != expectedResult {
+		t.Errorf("Expected list to be not empty but it is not.")
+	}
+}

@@ -1,5 +1,14 @@
 package lists
 
+// Stack ADT
+type Stack interface {
+	Push(interface{})
+	Pop() interface{}
+	Peek() interface{}
+	Size() int
+	IsEmpty() bool
+}
+
 type stack struct {
 	list *singlyLinkedList
 }
@@ -27,6 +36,10 @@ func (st *stack) Peek() interface{}  {
 
 func (st *stack) Size() int {
 	return st.list.size
+}
+
+func (st *stack) IsEmpty() bool {
+	return st.list.IsEmpty()
 }
 
 func (st *stack) ToSlice() []interface{} {
